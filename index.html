@@ -5,8 +5,17 @@ title: The Sandbox
 
 <p>Say <q>Hello</q> to <em>Github Pages</em>.</p>
 
+<h2>Articles</h2>
+
 <ul class="posts">
-    {% for post in site.posts %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a>{{ post.tags }}</li>
-    {% endfor %}
-  </ul>
+{% for post in site.posts %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a>
+    	<dl>
+    		<dt>Date:</dt>
+    		<dd>{{ post.date }}
+    		<dt>Tags:</dt>
+    		<dd>{{ post.tags }}</dd>
+    	</dl>
+	</li>
+{% endfor %}
+</ul>
