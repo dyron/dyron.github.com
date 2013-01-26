@@ -2,4 +2,11 @@
 layout: default
 title: The Sandbox
 ---
+
 <p>Say <q>Hello</q> to <em>Github Pages</em>.</p>
+
+<ul class="posts">
+    {% for post in site.posts %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
