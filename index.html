@@ -7,6 +7,6 @@ title: The Sandbox
 
 <ul class="posts">
     {% for post in site.posts %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      <li><a href="{{ post.url }}">{{ post.title }}</a>{{ post.tags }}</li>
     {% endfor %}
   </ul>
