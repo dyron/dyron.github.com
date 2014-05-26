@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 title: Refactor legacy code: resolve include
 tags: PHP, Refatoring
 ---
@@ -10,7 +10,7 @@ tags: PHP, Refatoring
 
 <dl>
 <dt>index.php</dt>
-<dd><pre>
+<dd><pre><code class="language-php language-html">
 &lt;?php
 
 include 'config.inc.php';
@@ -40,10 +40,10 @@ switch($_GET['p'])
 }
 
 ...
-</pre></dd>
+</code></pre></dd>
 
 <dt>list_articles.php</dt>
-<dd><pre>
+<dd><pre><code class="language-php language-html">
 &lt;?php
 
 $count = 5;
@@ -87,5 +87,5 @@ while ($article = mysql_fetch_array($articles)) {
 &lt;div class="paginate"&gt;
 &lt;?php include 'inc/paginate.php'; ?&gt;
 &lt;/div&gt;
-</pre></dd>
+</code></pre></dd>
 </dl>
