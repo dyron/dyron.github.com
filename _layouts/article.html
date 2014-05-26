@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <title>{{page.title}}</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Istok+Web:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Twitter Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.css">
+
+    <link type="text/css" rel="stylesheet" href="/css/site.css">
+	<style>
+	body {font-family: 'Istok Web', sans-serif;}
+	</style>
+  </head>
+  <body>
+    <section class="container">
+      <header class="page-header">
+        <h1 id="brand">{{ page.title }}</h1>
+      </header>
+
+      <p><a href="/">back</a></p>
+
+{{ content }}
+
+      <p><a href="/">back</a></p>
+    </section>
+  </body>
+</html>
