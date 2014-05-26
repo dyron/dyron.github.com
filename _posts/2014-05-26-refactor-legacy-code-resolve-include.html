@@ -1,0 +1,91 @@
+---
+layout: article
+title: Refactor legacy code: resolve include
+tags: PHP, Refatoring
+---
+
+<h2>{{ page.title }}</h2>
+
+<p>Refactoring a page script, you'll often step over <i>recursive</i> includes. </p>
+
+<dl>
+<dt>index.php</dt>
+<dd><pre>
+&lt;?php
+
+include 'config.inc.php';
+
+...
+
+?&gt;
+&lt;div class="header"&gt;
+&lt;?php include 'includes/page_header.php'; ?&gt;
+&lt;/div&gt;
+
+&lt;?php 
+
+switch($_GET['p'])
+{
+	case '1.1':
+	include 'includes/articles/list_articles.php';
+	break;
+	case '1.2':
+	include 'includes/articles/edit_articles.php';
+	break;
+	case '1.3':
+	include 'includes/articles/delete_articles.php';
+	break;
+
+	...
+}
+
+...
+</pre></dd>
+
+<dt>list_articles.php</dt>
+<dd><pre>
+&lt;?php
+
+$count = 5;
+
+if (isset($_GET['page']))
+{
+$limit = " LIMIT ".($_GET['page'] - 1) * $count.", ".$count;
+}
+else
+{
+$limit = " LIMIT 0, ".$count;
+}
+
+if (isset($_GET['s']))
+{
+$where = " WHERE (`title` LIKE '%".mysql_real_escape_string($_GET['s'])."%' OR `content` LIKE '%".mysql_real_escape_string($_GET['s'])."%')";
+}
+
+&lt;div class="header"&gt;
+&lt;?php include 'includes/articles/header.php'; ?&gt;
+&lt;/div&gt;
+
+&lt;div class="menu"&gt;
+&lt;?php include 'includes/menu.php'; ?&gt;
+&lt;/div&gt;
+
+&lt;?php 
+
+$articles = mysql_query("SELECT * FROM `articles`$where$limit ORDER BY `id`");
+
+while ($article = mysql_fetch_array($articles)) { 
+
+?&gt;
+...
+&lt;?php 
+
+} 
+
+?&gt;
+
+&lt;div class="paginate"&gt;
+&lt;?php include 'inc/paginate.php'; ?&gt;
+&lt;/div&gt;
+</pre></dd>
+</dl>
