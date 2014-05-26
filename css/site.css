@@ -14,4 +14,4 @@
 }
 
 .posts .meta dt, .posts .meta dd { display: inline; }
-.posts .meta dd + dt:before { content: '&bull;'; }
+.posts .meta dd + dt:before { content: ' · '; }
